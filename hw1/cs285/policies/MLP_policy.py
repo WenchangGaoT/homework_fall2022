@@ -91,7 +91,6 @@ class MLPPolicy(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
             action = distributions.Categorical(logits=param).sample()
         else:
             action = distributions.Normal(param, self.logstd.exp()).sample()
-            action = param
         return ptu.to_numpy(action)
 
     # update/train this policy
